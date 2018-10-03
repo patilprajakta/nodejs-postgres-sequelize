@@ -20,7 +20,18 @@ db.sequelize.sync().then(() => {
 });
 
 //set up local server
-const port = process.env.PORT || 3000;
-app.listen(port, () =>
-  console.log(`Server is listening on port ${port}...`)
-);
+// const port = process.env.PORT || 5000;
+// app.listen(port, () =>
+//   console.log(`Server is listening on port ${port}...`)
+// );
+
+require('./app/routes/user.route.js')(app);
+ 
+// Create a Server
+var server = app.listen(8081, function () {
+ 
+  var host = server.address().address
+  var port = server.address().port
+ 
+  console.log("App listening at http://%s:%s", host, port)
+})
