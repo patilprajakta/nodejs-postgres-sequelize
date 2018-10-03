@@ -1,0 +1,23 @@
+version: '2.0'
+services:
+    db:
+        image: "postgres"
+        container_name: "db"
+        restart: "always"
+        volumes:
+          - "./data/db/:/var/lib/postgresql/data"
+        environment:
+          PGDATA: "/var/lib/postgresql/data/db-files"
+          # POSTGRES_DB: "bravura_db"
+          # POSTGRES_PASSWORD: "Bravura123#"
+          POSTGRES_DB: "postgres"
+          POSTGRES_PASSWORD: "root"
+        ports:
+          - "5433:5432"
+
+    adminer:
+        image: "adminer"
+        container_name: "adminer"
+        restart: "always"
+        ports:
+          - 8080:8080
